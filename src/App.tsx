@@ -14,7 +14,7 @@ function App() {
       </Button>
       {alertVisible && (
         <Alert onClose={() => setAlertVisibility(false)}>
-          Person preference kinda but yeaaah!
+          Personal preference kinda but yeaaah!
         </Alert>
       )}
       <Listgroup>CITY-NAME</Listgroup>

@@ -1,13 +1,13 @@
-import React from "react";
-import { ReactNode } from "react";
-import { MouseEvent } from "react";
+import React, { useState } from "react";
 
 interface Props {}
 
 const Listgroup = ({}: Props) => {
-  let items = ["LM", "HC", "Prague", "Oslo", "Hlboke"];
+  const items = ["LM", "HC", "Prague", "Oslo", "Hlboke"];
 
-  const handleClick = (event: MouseEvent) => console.log(event);
+  // Hook
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+
   return (
     <>
       <div>
@@ -15,11 +15,38 @@ const Listgroup = ({}: Props) => {
         {items.length === 0 ? <p>No items found</p> : null}
         <ul className="list-group">
           {items.map((item, index) => (
-            <li className="list-group-item" key={item} onClick={handleClick}>
+            <li
+              className={
+                selectedIndex === index
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              key={item}
+              onClick={() => setSelectedIndex(index)}
+            >
               {item}
+              {selectedIndex === index && (
+                <img
+                  src={"srcassetsHLBOKE.jpg"}
+                  style={{
+                    marginLeft: "350px",
+                    maxHeight: "50px",
+                    maxWidth: "50px",
+                  }}
+                />
+              )}
             </li>
           ))}
         </ul>
+        <img
+          src={"srcassetsHLBOKE.jpg"}
+          style={{
+            marginLeft: "350px",
+            marginTop: "250px",
+            maxHeight: "100px",
+            maxWidth: "100px",
+          }}
+        />
       </div>
     </>
   );
